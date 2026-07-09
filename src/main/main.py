@@ -100,10 +100,11 @@ def write_user_analytics(csv_file_path):
         lines = cursor.fetchall();
         for i in lines:
             cLine = lines[i];
-            for s in range(len(cLine)):
-                file.write(cLine[s]);
-                if(s != len(cLine)-1): file.write(",");
-            if(cLine != len(lines)):file.write("\n");
+            print(cLine)
+            # for s in range(len(cLine)):
+            #     file.write(cLine[s]);
+            #     if(s != len(cLine)-1): file.write(",");
+            # if(cLine != len(lines)):file.write("\n");
 
     print("TODO: write_user_analytics")
 
