@@ -7,6 +7,25 @@ conn = sqlite3.connect(':memory:')
 # A cursor object to execute SQL commands
 cursor = conn.cursor()
 
+def ParseCsv(filePath) -> list[list[str]]:
+    result = []
+    with open(filePath,'r') as file:
+        fileColumns = 0;
+        for i in file.readlines():
+            splitString = i.split(",")
+            lineColumns = len(splitString);
+            if (fileColumns > 0 and lineColumns != columns):continue;
+            isValidSequence = True;
+            for s in splitString:
+                if(len(s)==0):
+                    isValidSequence = False;
+                    break;
+            if(not isValidSequence):continue;
+            columns = lineColumns;
+            
+            splitString[-1] = splitString[-1].removesuffix("\n");
+            result.append(splitString);
+    return result;
 
 def main():
 
@@ -48,7 +67,7 @@ def main():
 
 # This function will load the users.csv file into the users table, discarding any records with incomplete data
 def load_and_clean_users(file_path):
-
+    ParseCsv(file_path);
     print("TODO: load_users")
 
 
