@@ -20,7 +20,7 @@ def ParseCsv(filePath) -> list[list[str]]:
             if (fileColumns > 0 and lineColumns != fileColumns):continue;
             isValidSequence = True;
             for s in splitString:
-                if(len(s)==0):
+                if(len(s)==0 or s.isspace()):
                     isValidSequence = False;
                     break;
             if(not isValidSequence):continue;
