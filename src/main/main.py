@@ -7,6 +7,8 @@ conn = sqlite3.connect(':memory:')
 # A cursor object to execute SQL commands
 cursor = conn.cursor()
 
+
+
 def ParseCsv(filePath) -> list[list[str]]:
     result = []
     with open(filePath,'r') as file:
@@ -14,14 +16,14 @@ def ParseCsv(filePath) -> list[list[str]]:
         for i in file.readlines():
             splitString = i.split(",")
             lineColumns = len(splitString);
-            if (fileColumns > 0 and lineColumns != columns):continue;
+            if (fileColumns > 0 and lineColumns != fileColumns):continue;
             isValidSequence = True;
             for s in splitString:
                 if(len(s)==0):
                     isValidSequence = False;
                     break;
             if(not isValidSequence):continue;
-            columns = lineColumns;
+            fileColumns = lineColumns;
             
             splitString[-1] = splitString[-1].removesuffix("\n");
             result.append(splitString);
@@ -68,9 +70,8 @@ def main():
 # This function will load the users.csv file into the users table, discarding any records with incomplete data
 def load_and_clean_users(file_path):
     info = ParseCsv(file_path);
-    for i in info:
-         cursor.execute("Insert into users (firstname,lastname) values (?,?)", (i[0],i[1]))
-    #cursor.executemany("Insert into users (firstname,lastname) values (?,?)", [["jake","Tom"]])
+    
+    cursor.executemany("Insert into users (firstname,lastname) values (?,?)", i)
     conn.commit()
     print("TODO: load_users")
 
