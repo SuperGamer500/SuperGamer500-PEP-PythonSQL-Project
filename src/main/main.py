@@ -99,7 +99,7 @@ def write_user_analytics(csv_file_path):
         file.write("userId,avgDuration,numCalls\n")
         for i in cursor.fetchall():
             print(i);
-            file.write(i,"\n",sep="");
+            file.write(f"{s}\n");
     print("TODO: write_user_analytics")
 
 
