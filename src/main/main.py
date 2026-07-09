@@ -95,7 +95,7 @@ def load_and_clean_call_logs(file_path):
 def write_user_analytics(csv_file_path):
     cursor.execute("SELECT userId, s/c as Average, c from (SELECT userId, Sum(endTime-startTime) as s, Count(*) as c from callLogs Group By userId);")
     print(cursor.fetchall());
-    with open("../resources/userAnalytics.csv",'w') as file:
+    with open("../../resources/userAnalytics.csv",'w') as file:
         file.write("userId,avgDuration,numCalls\n")
         for i in cursor.fetchall():
             file.write(i,"\n",sep="");
