@@ -76,7 +76,6 @@ def load_and_clean_users(file_path):
     cursor.executemany("Insert into users (firstname,lastname) values (?,?)", info[1:])
     conn.commit()
     
-    print("TODO: load_users")
 
 
 # This function will load the callLogs.csv file into the callLogs table, discarding any records with incomplete data
@@ -86,7 +85,6 @@ def load_and_clean_call_logs(file_path):
     conn.commit()
     cursor.execute("Select * from callLogs");
    
-    print("TODO: load_call_logs")
 
 
 # This function will write analytics data to testUserAnalytics.csv - average call time, and number of calls per user.
@@ -108,8 +106,6 @@ def write_user_analytics(csv_file_path):
                 if(s != len(cLine)-1): file.write(",");
             if(cLine != len(lines)):file.write("\n");
 
-    print("TODO: write_user_analytics")
-
 
 # This function will write the callLogs ordered by userId, then start time.
 # Then, write the ordered callLogs to orderedCalls.csv
@@ -125,7 +121,6 @@ def write_ordered_calls(csv_file_path):
                 file.write(str(cLine[s]));
                 if(s != len(cLine)-1): file.write(",");
             if(cLine != len(lines)):file.write("\n");
-    print("TODO: write_ordered_calls")
 
 
 
