@@ -97,9 +97,14 @@ def write_user_analytics(csv_file_path):
    
     with open(csv_file_path,'w') as file:
         file.write("userId,avgDuration,numCalls\n")
-        for i in cursor.fetchall():
-            print(i);
-            file.write(f"{i}\n");
+        lines = cursor.fetchall();
+        for i in lines:
+            cLine = lines[i];
+            for s in range(len(cLine)):
+                file.write(cLine[s]);
+                if(s != len(cLine)-1): file.write(",");
+            if(cLine != len(lines)):file.write("\n");
+
     print("TODO: write_user_analytics")
 
 
