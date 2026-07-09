@@ -15,6 +15,7 @@ def ParseCsv(filePath) -> list[list[str]]:
         fileColumns = 0;
         for i in file.readlines():
             splitString = i.split(",")
+            print(splitString)
             lineColumns = len(splitString);
             if (fileColumns > 0 and lineColumns != fileColumns):continue;
             isValidSequence = True;
@@ -73,8 +74,7 @@ def load_and_clean_users(file_path):
    
     cursor.executemany("Insert into users (firstname,lastname) values (?,?)", info[1:])
     conn.commit()
-    for i in info:
-        print(i);
+    
     print("TODO: load_users")
 
 
