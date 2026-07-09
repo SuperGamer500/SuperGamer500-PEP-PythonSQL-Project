@@ -95,17 +95,17 @@ def load_and_clean_call_logs(file_path):
 def write_user_analytics(csv_file_path):
     cursor.execute("SELECT userId, s/c as Average, c from (SELECT userId, Sum(endTime-startTime) as s, Count(*) as c from callLogs Group By userId);")
    
-    with open(csv_file_path,'w') as file:
-        file.write("userId,avgDuration,numCalls\n")
-        lines = cursor.fetchall();
-        for i in range(len(lines)):
-            print(i)
-            cLine = lines[i];
-            print(cLine)
-            # for s in range(len(cLine)):
-            #     file.write(cLine[s]);
-            #     if(s != len(cLine)-1): file.write(",");
-            # if(cLine != len(lines)):file.write("\n");
+    # with open(csv_file_path,'w') as file:
+    #     file.write("userId,avgDuration,numCalls\n")
+    #     lines = cursor.fetchall();
+    #     for i in range(len(lines)):
+    #         print(i)
+    #         cLine = lines[i];
+    #         print(cLine)
+    #         # for s in range(len(cLine)):
+    #         #     file.write(cLine[s]);
+    #         #     if(s != len(cLine)-1): file.write(",");
+    #         # if(cLine != len(lines)):file.write("\n");
 
     print("TODO: write_user_analytics")
 
