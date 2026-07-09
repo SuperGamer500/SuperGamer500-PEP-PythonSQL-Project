@@ -102,7 +102,8 @@ def write_user_analytics(csv_file_path):
             
             cLine = lines[i];
             for s in range(len(cLine)):
-                file.write(cLine[s]);
+                print(cLine[s])
+                #file.write();
                 if(s != len(cLine)-1): file.write(",");
             if(cLine != len(lines)):file.write("\n");
 
