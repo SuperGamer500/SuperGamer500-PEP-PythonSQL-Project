@@ -69,7 +69,7 @@ def main():
 def load_and_clean_users(file_path):
     info = ParseCsv(file_path);
     for i in info:
-         cursor.execute("Insert into users (firstname,lastname) values (?,?)", i)
+         cursor.execute("Insert into users (firstname,lastname) values (?,?)", (i[0],i[1]))
     #cursor.executemany("Insert into users (firstname,lastname) values (?,?)", [["jake","Tom"]])
     conn.commit()
     print("TODO: load_users")
