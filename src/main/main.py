@@ -73,6 +73,8 @@ def load_and_clean_users(file_path):
    
     cursor.executemany("Insert into users (firstname,lastname) values (?,?)", info[1:])
     conn.commit()
+    for i in info:
+        print(i);
     print("TODO: load_users")
 
 
