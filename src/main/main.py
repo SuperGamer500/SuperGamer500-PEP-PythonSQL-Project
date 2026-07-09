@@ -15,10 +15,11 @@ def ParseCsv(filePath) -> list[list[str]]:
         fileColumns = 0;
         for i in file.readlines():
             splitString = i.split(",")
-            print(splitString)
+           
             lineColumns = len(splitString);
             if (fileColumns > 0 and lineColumns != fileColumns):continue;
             isValidSequence = True;
+            print(splitString)
             for s in splitString:
                 if(len(s)==0 or s.isspace()):
                     isValidSequence = False;
